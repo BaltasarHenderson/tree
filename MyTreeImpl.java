@@ -40,7 +40,10 @@ public class MyTreeImpl<K extends Comparable, T> implements MyTree<K, T> {
     }
 
     @Override
-    public T find(K key) {
+    public T find(K key) {""
+            ?
+            ?
+
         return findNode(key, root).getData();
     }
 
@@ -75,16 +78,15 @@ public class MyTreeImpl<K extends Comparable, T> implements MyTree<K, T> {
     public void delete(K key) {
         Node nodoABorrar = findNode(key, root);
         if (nodoABorrar != null) {
-            if (nodoABorrar.tieneHijos()) {
-                if (nodoABorrar.tieneHijoIzquierdo()) {
-                    nodoABorrar = nodoABorrar.getLeftChild();
-
-                } else if (nodoABorrar.tieneHijoDerecho()) {
-                    nodoABorrar = nodoABorrar.getRightChild();
-
+            if (!nodoABorrar.tieneHijos()) {
+                nodoABorrar=null;
+                }
+            else{
+                if(nodoABorrar.tieneHijoIzquierdo()){
+                    nodo.switch()
                 }
             }
-        }
+        }*/
     }
 
     @Override
@@ -125,19 +127,7 @@ public class MyTreeImpl<K extends Comparable, T> implements MyTree<K, T> {
 
     @Override
     public int countCompleteElements(Node nodo) {
-        /*if (nodo.tieneHijoIzquierdo() && !nodo.tieneHijoDerecho()) {
-            return 1 + countLeaf(nodo.getLeftChild());
-        }
-        if (!nodo.tieneHijoIzquierdo() && nodo.tieneHijoDerecho()) {
-            return 1 + countLeaf(nodo.getRightChild());
-        }
-        if (nodo.tieneHijoIzquierdo() && nodo.tieneHijoDerecho()) {
-            return 1 + countLeaf(nodo.getRightChild()) + countLeaf(nodo.getLeftChild());
-        }
-        if (nodo.esHoja()) {
-            return 0;
-        }
-        return 0;*/
+
         return size(nodo) - countLeaf(nodo);
     }
 

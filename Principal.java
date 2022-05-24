@@ -25,8 +25,6 @@ public class Principal {
         miArbolFacherito.preOrder(miArbolFacherito.root);
         System.out.println();
     }
-
-
     //prueba push
     //push2
 }
