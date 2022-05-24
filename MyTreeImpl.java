@@ -40,10 +40,7 @@ public class MyTreeImpl<K extends Comparable, T> implements MyTree<K, T> {
     }
 
     @Override
-    public T find(K key) {""
-            ?
-            ?
-
+    public T find(K key) {
         return findNode(key, root).getData();
     }
 
@@ -86,7 +83,7 @@ public class MyTreeImpl<K extends Comparable, T> implements MyTree<K, T> {
                     nodo.switch()
                 }
             }
-        }*/
+        }
     }
 
     @Override
