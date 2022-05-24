@@ -24,8 +24,7 @@ public class Principal {
         System.out.print("PreOrder: ");
         miArbolFacherito.preOrder(miArbolFacherito.root);
         System.out.println();
-        //Peñarol>>>>>Trouville;
-    }
-    //edén jasár
 
+    }
+    //prueba push
 }
