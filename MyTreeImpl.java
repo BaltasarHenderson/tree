@@ -73,22 +73,51 @@ public class MyTreeImpl<K extends Comparable, T> implements MyTree<K, T> {
 
     @Override
     public void delete(K key) {
-        Node nodoABorrar = findNode(key, root);
+        Node<K, T> nodoABorrar = findNode(key, root);
         if (nodoABorrar != null) {
             if (!nodoABorrar.tieneHijos()) {
-                nodoABorrar=null;
+                Node<K,T> nodoPadre = encontrarPadre(nodoABorrar);
+                if (nodoPadre != null) {
+                    if (nodoPadre.getLeftChild().getKey() == nodoABorrar.getKey()) {
+                        nodoPadre.setLeftChild(null);
+                    }
+                    if (nodoPadre.getRightChild().getKey() == nodoABorrar.getKey()) {
+                        nodoPadre.setRightChild(null);
+                    }
+                    System.out.println("Eliminado");
                 }
-            else{
-                if(nodoABorrar.tieneHijoIzquierdo()){
+            } else {
+                if (nodoABorrar.tieneHijoIzquierdo()) {
                     nodoABorrar.cambiarPorHijoIzquierdo();
                     delete(nodoABorrar.getKey());
-                }
-                else{
+                } else {
                     nodoABorrar.cambiarPorHijoDerecho();
                     delete(nodoABorrar.getKey());
                 }
             }
         }
+    }
+
+    public Node<K,T> encontrarPadre(Node nodo) {
+        Node<K, T> nodoTemporal = root;
+        if (nodoTemporal.getKey() == nodo.getKey()) {
+            return null;
+        } else {
+            if (nodoTemporal.tieneHijoIzquierdo()) {
+                if (nodoTemporal.getLeftChild() == nodo) {
+                    return nodoTemporal;
+                }
+                nodoTemporal = encontrarPadre(nodoTemporal.getLeftChild());
+            } else if (nodoTemporal != null && nodoTemporal.tieneHijoDerecho()) {
+                if (nodoTemporal.getRightChild() == nodo) {
+                    return nodoTemporal;
+                }
+                nodoTemporal = encontrarPadre(nodoTemporal.getRightChild());
+            } else {
+                encontrarPadre(nodo);
+            }
+        }
+        return null;
     }
 
     @Override

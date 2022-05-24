@@ -12,6 +12,9 @@ public class Principal {
         miArbolFacherito.insert(3,"Tres",2);
         miArbolFacherito.insert(12,"Doce",4);
 
+        miArbolFacherito.delete(3);
+        miArbolFacherito.delete(8);
+
         System.out.println("Size: " + miArbolFacherito.size(miArbolFacherito.root));
         System.out.println("Hojas: " + miArbolFacherito.countLeaf(miArbolFacherito.root));
         System.out.println("Elementos completos: " + miArbolFacherito.countCompleteElements(miArbolFacherito.root));

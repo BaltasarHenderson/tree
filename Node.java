@@ -25,15 +25,17 @@ public class Node<K extends Comparable, T> {
         return getRightChild()!=null;
     }
 
+
+
     public void cambiarPorHijoIzquierdo(){
-        Node hijo=leftChild;
+        Node<K,T> hijo=leftChild;
         this.setLeftChild(this);
         this.key=hijo.getKey();
         this.data=hijo.getData();
     }
 
     public void cambiarPorHijoDerecho(){
-        Node hijo=rightChild;
+        Node<K,T> hijo=rightChild;
         this.setRightChild(this);
         this.key=hijo.getKey();
         this.data=hijo.getData();
