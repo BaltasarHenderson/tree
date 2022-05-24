@@ -80,7 +80,12 @@ public class MyTreeImpl<K extends Comparable, T> implements MyTree<K, T> {
                 }
             else{
                 if(nodoABorrar.tieneHijoIzquierdo()){
-                    nodo.switch()
+                    nodoABorrar.cambiarPorHijoIzquierdo();
+                    delete(nodoABorrar.getKey());
+                }
+                else{
+                    nodoABorrar.cambiarPorHijoDerecho();
+                    delete(nodoABorrar.getKey());
                 }
             }
         }
