@@ -49,24 +49,24 @@ public class MyTreeImpl<K extends Comparable, T> implements MyTree<K, T> {
         if (parentKey == null) {
             Node<K, T> nodoNuevo = new Node(key, data, null, null);
             this.root = nodoNuevo;
-            System.out.println("Todo joya");
+            System.out.println("Insertado");
         } else {
             Node<K, T> nodoPadre = findNode(parentKey, root);
             if (nodoPadre != null) {
                 if (nodoPadre.getKey().compareTo(key) < 0 && nodoPadre.getRightChild() == null) {
                     Node<K, T> nodoNuevo = new Node(key, data, null, null);
                     nodoPadre.setRightChild(nodoNuevo);
-                    System.out.println("todo joya");
+                    System.out.println("Insertado");
                 } else if (nodoPadre.getKey().compareTo(key) > 0 && nodoPadre.getLeftChild() == null) {
                     Node<K, T> nodoNuevo = new Node(key, data, null, null);
                     nodoPadre.setLeftChild(nodoNuevo);
-                    System.out.println("todo joya");
+                    System.out.println("Insertado");
                 } else {
-                    System.out.println("rompimo algo");
+                    System.out.println("Error");
                 }
             }
             if (nodoPadre == null) {
-                System.out.println("F");
+                System.out.println("Error");
             }
         }
     }

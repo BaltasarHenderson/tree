@@ -2,19 +2,19 @@ public class Principal {
     public static void main(String[] args) {
         MyTreeImpl<Integer, String> miArbolFacherito = new MyTreeImpl();
 
-        miArbolFacherito.insert(5,"Mesi",null);
-        miArbolFacherito.insert(6,"Luis",5);
-        miArbolFacherito.insert(7,"Cacha",6);
-        miArbolFacherito.insert(8,"Cebolla",7);
-        miArbolFacherito.insert(9,"Boka",8);
-        miArbolFacherito.insert(4,"River",5);
-        miArbolFacherito.insert(2,"Barsita",4);
-        miArbolFacherito.insert(3,"Oriente Petrolero",2);
-        miArbolFacherito.insert(12,"Guardiola",4);
+        miArbolFacherito.insert(5,"Cinco",null);
+        miArbolFacherito.insert(6,"Seis",5);
+        miArbolFacherito.insert(7,"Siete",6);
+        miArbolFacherito.insert(8,"Ocho",7);
+        miArbolFacherito.insert(9,"Nueve",8);
+        miArbolFacherito.insert(4,"Cuatro",5);
+        miArbolFacherito.insert(2,"Dos",4);
+        miArbolFacherito.insert(3,"Tres",2);
+        miArbolFacherito.insert(12,"Doce",4);
 
         System.out.println("Size: " + miArbolFacherito.size(miArbolFacherito.root));
         System.out.println("Hojas: " + miArbolFacherito.countLeaf(miArbolFacherito.root));
-        System.out.println("Hojas'nt: " + miArbolFacherito.countCompleteElements(miArbolFacherito.root));
+        System.out.println("Elementos completos: " + miArbolFacherito.countCompleteElements(miArbolFacherito.root));
         System.out.print("InOrder: ");
         miArbolFacherito.inOrder(miArbolFacherito.root);
         System.out.println();
