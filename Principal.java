@@ -25,10 +25,8 @@ public class Principal {
         miArbolFacherito.preOrder(miArbolFacherito.root);
         System.out.println();
     }
-    //edén jasár
-    //preguntarle a rolo como subir cambios
 
-    }
+
     //prueba push
     //push2
 }
