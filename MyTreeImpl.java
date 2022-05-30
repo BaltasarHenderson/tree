@@ -71,30 +71,48 @@ public class MyTreeImpl<K extends Comparable, T> implements MyTree<K, T> {
         }
     }
 
-    @Override
-    public void delete(K key) {
-        Node<K, T> nodoABorrar = findNode(key, root);
-        if (nodoABorrar != null) {
-            if (!nodoABorrar.tieneHijos()) {
-                Node<K,T> nodoPadre = encontrarPadre(nodoABorrar);
-                if (nodoPadre != null) {
-                    if (nodoPadre.getLeftChild().getKey() == nodoABorrar.getKey()) {
-                        nodoPadre.setLeftChild(null);
-                    }
-                    if (nodoPadre.getRightChild().getKey() == nodoABorrar.getKey()) {
-                        nodoPadre.setRightChild(null);
-                    }
-                    System.out.println("Eliminado");
-                }
+    private Node<K,T> getMax(Node<K,T> root){
+        Node<K,T> result=null;
+        if (root!=null){
+            if (root.getRightChild()==null){
+                result=root;
             } else {
-                if (nodoABorrar.tieneHijoIzquierdo()) {
-                    nodoABorrar.cambiarPorHijoIzquierdo();
-                    delete(nodoABorrar.getKey());
-                } else {
-                    nodoABorrar.cambiarPorHijoDerecho();
-                    delete(nodoABorrar.getKey());
-                }
+                result= getMax(root.getRightChild());
             }
+        }
+        return result;
+    }
+
+    public void delete(K key) {
+        root=delete(key,root);
+    }
+
+    private Node<K,T> delete(K key, Node<K,T> root) {
+        Node<K,T> returnTree= root;
+        if(root!=null) {
+            if (root.getKey().compareTo(key) == 0) {
+                if (root.getLeftChild() == null && root.getRightChild() == null) {
+                    returnTree = null;
+                } else if (root.getLeftChild() == null) {
+                    returnTree = root.getRightChild();
+                } else if (root.getRightChild() == null) {
+                    returnTree = root.getLeftChild();
+                } else {
+                    Node<K, T> max = getMax(root.getLeftChild());
+                    root.setKey(max.getKey());
+                    root.setData(max.getData());
+                    root.setLeftChild(delete(max.getKey(), root.getLeftChild()));
+                }
+
+            } else if (root.getKey().compareTo(key) > 0) {
+                root.setRightChild(delete(key, root.getRightChild()));
+            } else if (root.getKey().compareTo(key) < 0) {
+                root.setLeftChild(delete(key, root.getLeftChild()));
+            }
+            return returnTree;
+        }
+        else{
+            return null;
         }
     }
 
@@ -117,7 +135,7 @@ public class MyTreeImpl<K extends Comparable, T> implements MyTree<K, T> {
                 encontrarPadre(nodo);
             }
         }
-        return null;
+        return encontrarPadre(nodoTemporal);
     }
 
     @Override
